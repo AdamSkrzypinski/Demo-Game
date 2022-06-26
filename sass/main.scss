@@ -18,7 +18,7 @@ html {
 }
 
 body {
-	font-family: 'Press Start 2P';
+	font-family: "Press Start 2P";
 	// font-family: "Roboto", sans-serif;
 }
 
@@ -38,10 +38,10 @@ header {
 	height: 15%;
 	width: 100%;
 	background-color: $primary-color;
+	transition: transform 0.3s;
 
 	.title {
 		font-size: 2.5rem;
-
 		color: $text-color;
 		text-shadow: 0.2rem 0.2rem 0.2rem red;
 	}
@@ -79,6 +79,21 @@ header {
 	}
 }
 
+.header-game-active {
+	transform: scaleY(40%) translateY(-75%);
+
+	.title {
+		transform: scaleY(200%);
+	}
+
+	h1 {
+		animation: none;
+	}
+	.blink-cursor {
+		animation: none;
+	}
+}
+
 // MAIN
 
 main {
@@ -94,6 +109,7 @@ main {
 		height: 100%;
 		background-color: #8a06e9;
 		clip-path: inset(0 0 0 0);
+		transition: clip-path 0.5s;
 
 		.start-btn {
 			padding: 1.5rem 3rem;
@@ -117,9 +133,14 @@ main {
 			}
 		}
 	}
+
+	.game-in-progress {
+		clip-path: inset(0 0 100% 0);
+	}
 }
 
 // FOOTER
+
 footer {
 	display: flex;
 	justify-content: center;

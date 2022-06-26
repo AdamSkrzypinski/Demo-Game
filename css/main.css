@@ -13,7 +13,7 @@ html {
 }
 
 body {
-  font-family: 'Press Start 2P';
+  font-family: "Press Start 2P";
 }
 
 .wrapper {
@@ -36,6 +36,10 @@ header {
   height: 15%;
   width: 100%;
   background-color: #590696;
+  -webkit-transition: -webkit-transform 0.3s;
+  transition: -webkit-transform 0.3s;
+  transition: transform 0.3s;
+  transition: transform 0.3s, -webkit-transform 0.3s;
 }
 
 header .title {
@@ -95,6 +99,26 @@ header .blink-cursor {
   }
 }
 
+.header-game-active {
+  -webkit-transform: scaleY(40%) translateY(-75%);
+          transform: scaleY(40%) translateY(-75%);
+}
+
+.header-game-active .title {
+  -webkit-transform: scaleY(200%);
+          transform: scaleY(200%);
+}
+
+.header-game-active h1 {
+  -webkit-animation: none;
+          animation: none;
+}
+
+.header-game-active .blink-cursor {
+  -webkit-animation: none;
+          animation: none;
+}
+
 main {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -118,6 +142,10 @@ main .starting-board {
   background-color: #8a06e9;
   -webkit-clip-path: inset(0 0 0 0);
           clip-path: inset(0 0 0 0);
+  -webkit-transition: -webkit-clip-path 0.5s;
+  transition: -webkit-clip-path 0.5s;
+  transition: clip-path 0.5s;
+  transition: clip-path 0.5s, -webkit-clip-path 0.5s;
 }
 
 main .starting-board .start-btn {
@@ -142,6 +170,11 @@ main .starting-board .start-btn:hover {
   background-color: #eb0291;
   -webkit-box-shadow: 0.4rem 0.4rem 0.4rem red;
           box-shadow: 0.4rem 0.4rem 0.4rem red;
+}
+
+main .game-in-progress {
+  -webkit-clip-path: inset(0 0 100% 0);
+          clip-path: inset(0 0 100% 0);
 }
 
 footer {
