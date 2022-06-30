@@ -98,6 +98,7 @@ header {
 
 main {
 	display: flex;
+	position: relative;
 	height: 80%;
 	width: 100%;
 
@@ -107,9 +108,10 @@ main {
 		align-items: center;
 		width: 100%;
 		height: 100%;
-		background-color: #8a06e9;
+		background-color: $secondary-color;
 		clip-path: inset(0 0 0 0);
-		transition: clip-path 0.5s;
+		transition: clip-path 0.5s steps(15, end);
+		z-index: 2;
 
 		.start-btn {
 			padding: 1.5rem 3rem;
@@ -136,6 +138,59 @@ main {
 
 	.game-in-progress {
 		clip-path: inset(0 0 100% 0);
+		z-index: -2;
+	}
+
+	.game-active {
+		display: flex;
+		flex-direction: column;
+		position: absolute;
+		width: 100%;
+		height: 112%;
+		transform: translateY(-10.5%);
+		.game-section {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-wrap: wrap;
+			width: 100%;
+			height: 80%;
+			background-color: #67b8ee;
+			font-family: "Roboto", sans-serif;
+
+			.game-card {
+				display: flex;
+				margin: 0.8rem;
+				height: 22%;
+				min-width: 10%;
+				width: 14%;
+				border-radius: 5px;
+				box-shadow: 0.1rem 0.1rem 0.4rem red;
+			}
+
+			.card-reverse {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				width: 100%;
+				height: 100%;
+				font-size: 7rem;
+				text-shadow: 0.1rem 0.1rem 0.1rem red;
+				background-color: $secondary-color;
+			}
+
+			.card-obverse {
+				display: none;
+			}
+		}
+
+		.status-section {
+			display: flex;
+			width: 100%;
+			height: 20%;
+			transform: translateY(-1%);
+			background-color: #67b8ee;
+		}
 	}
 }
 

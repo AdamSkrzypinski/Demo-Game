@@ -123,6 +123,7 @@ main {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  position: relative;
   height: 80%;
   width: 100%;
 }
@@ -142,10 +143,11 @@ main .starting-board {
   background-color: #8a06e9;
   -webkit-clip-path: inset(0 0 0 0);
           clip-path: inset(0 0 0 0);
-  -webkit-transition: -webkit-clip-path 0.5s;
-  transition: -webkit-clip-path 0.5s;
-  transition: clip-path 0.5s;
-  transition: clip-path 0.5s, -webkit-clip-path 0.5s;
+  -webkit-transition: -webkit-clip-path 0.5s steps(15, end);
+  transition: -webkit-clip-path 0.5s steps(15, end);
+  transition: clip-path 0.5s steps(15, end);
+  transition: clip-path 0.5s steps(15, end), -webkit-clip-path 0.5s steps(15, end);
+  z-index: 2;
 }
 
 main .starting-board .start-btn {
@@ -175,6 +177,85 @@ main .starting-board .start-btn:hover {
 main .game-in-progress {
   -webkit-clip-path: inset(0 0 100% 0);
           clip-path: inset(0 0 100% 0);
+  z-index: -2;
+}
+
+main .game-active {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  position: absolute;
+  width: 100%;
+  height: 112%;
+  -webkit-transform: translateY(-10.5%);
+          transform: translateY(-10.5%);
+}
+
+main .game-active .game-section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 100%;
+  height: 80%;
+  background-color: #67b8ee;
+  font-family: "Roboto", sans-serif;
+}
+
+main .game-active .game-section .game-card {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0.8rem;
+  height: 22%;
+  min-width: 10%;
+  width: 14%;
+  border-radius: 5px;
+  -webkit-box-shadow: 0.1rem 0.1rem 0.4rem red;
+          box-shadow: 0.1rem 0.1rem 0.4rem red;
+}
+
+main .game-active .game-section .card-reverse {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  height: 100%;
+  font-size: 7rem;
+  text-shadow: 0.1rem 0.1rem 0.1rem red;
+  background-color: #8a06e9;
+}
+
+main .game-active .game-section .card-obverse {
+  display: none;
+}
+
+main .game-active .status-section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  height: 20%;
+  -webkit-transform: translateY(-1%);
+          transform: translateY(-1%);
+  background-color: #67b8ee;
 }
 
 footer {
