@@ -38,12 +38,13 @@ header {
 	height: 15%;
 	width: 100%;
 	background-color: $primary-color;
-	transition: transform 0.3s;
+	transition: transform 0.5s 0.7s;
 
 	.title {
 		font-size: 2.5rem;
 		color: $text-color;
 		text-shadow: 0.2rem 0.2rem 0.2rem red;
+		transition: transform 0.5s 0.7s;
 	}
 
 	h1 {
@@ -110,7 +111,7 @@ main {
 		height: 100%;
 		background-color: $secondary-color;
 		clip-path: inset(0 0 0 0);
-		transition: clip-path 0.5s steps(15, end);
+		transition: clip-path 1s steps(15, end);
 		z-index: 2;
 
 		.start-btn {
@@ -126,7 +127,7 @@ main {
 			border: none;
 			box-shadow: 0.2rem 0.2rem 0.2rem red;
 			cursor: pointer;
-			transition: background-color 0.1s, box-shadow0.1s;
+			transition: background-color 0.1s, box-shadow 0.1s;
 
 			&:hover {
 				background-color: #eb0291;
@@ -136,9 +137,9 @@ main {
 		}
 	}
 
-	.game-in-progress {
+	.game-start-animation {
 		clip-path: inset(0 0 100% 0);
-		z-index: -2;
+		z-index: 1;
 	}
 
 	.game-active {
@@ -148,6 +149,7 @@ main {
 		width: 100%;
 		height: 112%;
 		transform: translateY(-10.5%);
+		z-index: -2;
 		.game-section {
 			display: flex;
 			justify-content: center;
@@ -160,27 +162,85 @@ main {
 
 			.game-card {
 				display: flex;
+				position: relative;
 				margin: 0.8rem;
 				height: 22%;
 				min-width: 10%;
 				width: 14%;
 				border-radius: 5px;
-				box-shadow: 0.1rem 0.1rem 0.4rem red;
+				cursor: pointer;
 			}
 
 			.card-reverse {
 				display: flex;
 				justify-content: center;
 				align-items: center;
+				position: absolute;
 				width: 100%;
 				height: 100%;
 				font-size: 7rem;
 				text-shadow: 0.1rem 0.1rem 0.1rem red;
+				box-shadow: 0.1rem 0.1rem 0.4rem red;
+				border-radius: 5px;
 				background-color: $secondary-color;
+				z-index: 2;
+				pointer-events: none;
+				transition: transform 0.5s, opacity 0.5s;
 			}
 
 			.card-obverse {
-				display: none;
+				position: absolute;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				width: 100%;
+				height: 100%;
+				background-color: #fde893;
+				box-shadow: -0.1rem 0.1rem 0.4rem red;
+				border-radius: 5px;
+				opacity: 0;
+				transition: transform 0.5s, opacity 0.5s;
+				pointer-events: none;
+				i {
+					font-size: 5rem;
+				}
+			}
+			.selected-reverse {
+				transform: rotateY(180deg);
+				opacity: 0;
+			}
+
+			.selected-obverse {
+				transform: rotateY(-180deg);
+				opacity: 1;
+			}
+
+			.card-match {
+				animation: match 1s 0.5s steps(12) forwards;
+				pointer-events: none;
+			}
+
+			@keyframes match {
+				0% {
+					opacity: 1;
+				}
+
+				20% {
+					opacity: 0;
+				}
+				40% {
+					opacity: 1;
+				}
+				60% {
+					opacity: 0;
+				}
+				80% {
+					opacity: 1;
+				}
+
+				100% {
+					opacity: 0;
+				}
 			}
 		}
 
