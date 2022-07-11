@@ -199,7 +199,6 @@ main .game-active {
   height: 112%;
   -webkit-transform: translateY(-10.5%);
           transform: translateY(-10.5%);
-  z-index: -2;
 }
 
 main .game-active .game-section {
@@ -233,7 +232,8 @@ main .game-active .game-section .game-card {
   cursor: pointer;
 }
 
-main .game-active .game-section .card-reverse {
+main .game-active .game-section .card-reverse,
+main .game-active .game-section .card-obverse {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -246,46 +246,32 @@ main .game-active .game-section .card-reverse {
   position: absolute;
   width: 100%;
   height: 100%;
+  border-radius: 5px;
+  pointer-events: none;
+  -webkit-transition: opacity 0.5s, -webkit-transform 0.5s;
+  transition: opacity 0.5s, -webkit-transform 0.5s;
+  transition: transform 0.5s, opacity 0.5s;
+  transition: transform 0.5s, opacity 0.5s, -webkit-transform 0.5s;
+}
+
+main .game-active .game-section .card-reverse {
   font-size: 7rem;
   text-shadow: 0.1rem 0.1rem 0.1rem red;
   -webkit-box-shadow: 0.1rem 0.1rem 0.4rem red;
           box-shadow: 0.1rem 0.1rem 0.4rem red;
-  border-radius: 5px;
   background-color: #8a06e9;
   z-index: 2;
-  pointer-events: none;
-  -webkit-transition: opacity 0.5s, -webkit-transform 0.5s;
-  transition: opacity 0.5s, -webkit-transform 0.5s;
-  transition: transform 0.5s, opacity 0.5s;
-  transition: transform 0.5s, opacity 0.5s, -webkit-transform 0.5s;
 }
 
 main .game-active .game-section .card-obverse {
-  position: absolute;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  width: 100%;
-  height: 100%;
   background-color: #fde893;
   -webkit-box-shadow: -0.1rem 0.1rem 0.4rem red;
           box-shadow: -0.1rem 0.1rem 0.4rem red;
-  border-radius: 5px;
   opacity: 0;
-  -webkit-transition: opacity 0.5s, -webkit-transform 0.5s;
-  transition: opacity 0.5s, -webkit-transform 0.5s;
-  transition: transform 0.5s, opacity 0.5s;
-  transition: transform 0.5s, opacity 0.5s, -webkit-transform 0.5s;
-  pointer-events: none;
 }
 
 main .game-active .game-section .card-obverse i {
+  position: absolute;
   font-size: 5rem;
 }
 
@@ -353,11 +339,107 @@ main .game-active .status-section {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   width: 100%;
   height: 20%;
   -webkit-transform: translateY(-1%);
           transform: translateY(-1%);
   background-color: #67b8ee;
+}
+
+main .game-active .status-section .game-status-section,
+main .game-active .status-section .buttons-section,
+main .game-active .status-section .time-section,
+main .game-active .status-section .moves-section, main .game-active .status-section .progress-section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+}
+
+main .game-active .status-section .game-status-section {
+  height: 55%;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+main .game-active .status-section .time-section,
+main .game-active .status-section .moves-section, main .game-active .status-section .progress-section {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 75%;
+  width: 30%;
+  background-color: #590696;
+  font-size: 1.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  color: #37e2d5;
+  -webkit-box-shadow: 0.1rem 0.1rem 0.4rem red;
+          box-shadow: 0.1rem 0.1rem 0.4rem red;
+  text-shadow: 0.1rem 0.2rem 0.2rem red;
+  border-radius: 6px;
+}
+
+main .game-active .status-section .time-section .time,
+main .game-active .status-section .time-section .moves, main .game-active .status-section .time-section .progress,
+main .game-active .status-section .moves-section .time,
+main .game-active .status-section .moves-section .moves,
+main .game-active .status-section .moves-section .progress, main .game-active .status-section .progress-section .time,
+main .game-active .status-section .progress-section .moves, main .game-active .status-section .progress-section .progress {
+  margin-bottom: 1rem;
+}
+
+main .game-active .status-section .time-section .time-counter, main .game-active .status-section .time-section .moves-counter, main .game-active .status-section .time-section .progress-counter,
+main .game-active .status-section .moves-section .time-counter,
+main .game-active .status-section .moves-section .moves-counter,
+main .game-active .status-section .moves-section .progress-counter, main .game-active .status-section .progress-section .time-counter, main .game-active .status-section .progress-section .moves-counter, main .game-active .status-section .progress-section .progress-counter {
+  font-size: 2.0rem;
+}
+
+main .game-active .status-section .buttons-section {
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  height: 45%;
+}
+
+main .game-active .status-section .buttons-section .btn-pause, main .game-active .status-section .buttons-section .btn-quit {
+  padding: 1.4rem 2.8rem;
+  font-family: "Press Start 2P";
+  text-transform: uppercase;
+  font-size: 2rem;
+  letter-spacing: 0.1rem;
+  text-align: center;
+  color: #fbcb0a;
+  text-shadow: 0.2rem 0.2rem 0.2rem red;
+  background-color: #c70a80;
+  border: none;
+  border-radius: 5px;
+  -webkit-box-shadow: 0.2rem 0.2rem 0.2rem red;
+          box-shadow: 0.2rem 0.2rem 0.2rem red;
+  cursor: pointer;
+  -webkit-transition: background-color 0.1s, -webkit-box-shadow 0.1s;
+  transition: background-color 0.1s, -webkit-box-shadow 0.1s;
+  transition: background-color 0.1s, box-shadow 0.1s;
+  transition: background-color 0.1s, box-shadow 0.1s, -webkit-box-shadow 0.1s;
+}
+
+main .game-active .status-section .buttons-section .btn-pause:hover, main .game-active .status-section .buttons-section .btn-quit:hover {
+  background-color: #eb0291;
+  -webkit-box-shadow: 0.4rem 0.4rem 0.4rem red;
+          box-shadow: 0.4rem 0.4rem 0.4rem red;
 }
 
 footer {
@@ -380,6 +462,23 @@ footer .footer-text {
   color: #37e2d5;
   font-size: 1.5rem;
   text-shadow: 0.1rem 0.1rem 0.1rem red;
+}
+
+@media (min-width: 576px) {
+  main .game-active .status-section .time-section,
+  main .game-active .status-section .moves-section,
+  main .game-active .status-section .progress-section {
+    font-size: 1.8rem;
+  }
+  main .game-active .status-section .time-section .time-counter, main .game-active .status-section .time-section .moves-counter, main .game-active .status-section .time-section .progress-counter,
+  main .game-active .status-section .moves-section .time-counter,
+  main .game-active .status-section .moves-section .moves-counter,
+  main .game-active .status-section .moves-section .progress-counter,
+  main .game-active .status-section .progress-section .time-counter,
+  main .game-active .status-section .progress-section .moves-counter,
+  main .game-active .status-section .progress-section .progress-counter {
+    font-size: 2.2rem;
+  }
 }
 
 @media (min-width: 768px) {

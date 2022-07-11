@@ -5,6 +5,8 @@ let allCards;
 let clickedCardID = [];
 let firstCard = [];
 let gameActivSection;
+let movesCount;
+let movesCounterText;
 
 const main = () => {
 	prepareDOMElements();
@@ -17,7 +19,8 @@ const prepareDOMElements = () => {
 	startBtn = document.querySelector(".start-btn");
 	allCards = document.querySelectorAll(".game-card");
 	gameActivSection = document.querySelector(".game-active");
-	console.log(allCards);
+	movesCount = 0;
+	movesCounterText = document.querySelector('.moves-counter')
 };
 
 const prepareDOMEvents = () => {
@@ -28,10 +31,10 @@ const prepareDOMEvents = () => {
 const gameStart = () => {
 	startingBoard.classList.add("game-start-animation");
 	setTimeout(headerStartAnimation, 450);
-	setTimeout(gameBoardActivatio, 1250);
+	setTimeout(gameBoardActivation, 1250);
 };
 
-const gameBoardActivatio = () => {
+const gameBoardActivation = () => {
 	gameActivSection.style.zIndex = "3";
 };
 
@@ -41,8 +44,12 @@ const headerStartAnimation = () => {
 
 const checkMatch = e => {
 	clickedCardID.push(e.target.id);
+	e.target.style.pointerEvents = 'none'
 	const clickedCardReverse = e.target.childNodes[1];
 	const clickedCardObverse = e.target.childNodes[3];
+	movesCount++
+	movesCounterText.textContent = `${movesCount}`
+	
 
 	if (clickedCardID.length === 1) {
 		firstCard.push(e.target);
@@ -72,6 +79,7 @@ const clear = e => {
 	firstCard[0].childNodes[3].classList.remove("selected-obverse");
 	clickedCardID = [];
 	firstCard = [];
+	allCards.forEach(card => card.style.pointerEvents = '')
 };
 
 document.addEventListener("DOMContentLoaded", main);

@@ -1,2 +1,17 @@
 @media (min-width: 576px) {
+	main {
+		.game-active {
+			.status-section {
+				.time-section,
+				.moves-section,
+				.progress-section {
+					font-size: 1.8rem;
+
+                    .time-counter, .moves-counter, .progress-counter {
+                        font-size: 2.2rem;
+                    }
+				}
+			}
+		}
+	}
 }

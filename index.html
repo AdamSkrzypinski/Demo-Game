@@ -19,7 +19,7 @@
 <body>
     <div class="wrapper">
 
-        <header class="header-top">
+        <header class="header-top header-game-active">
 
             <h1 class="title">demo game</h1><span class="blink-cursor title">_</span>
         </header>
@@ -29,7 +29,7 @@
 
 
         <main>
-            <div class="starting-board">
+            <div class="starting-board game-start-animation">
                 <button class="start-btn">start</button>
             </div>
             <div class="game-active">
@@ -171,7 +171,27 @@
 
                 </div>
 
-                <div class="status-section"></div>
+                <div class="status-section">
+                    <div class="game-status-section">
+                        <div class="time-section">
+                            <p class="time">Time</p>
+                            <p class="time-counter">0:00</p>
+                        </div>
+                        <div class="moves-section">
+                            <p class="moves">Moves</p>
+                            <p class="moves-counter">0</p>
+                        </div>
+                        <div class="progress-section">
+                            <p class="progress">status</p>
+                            <p class="progress-counter">0%</p>
+                        </div>
+                        
+                    </div>
+                    <div class="buttons-section">
+                        <button class="btn-pause">pause</button>
+                        <button class="btn-quit">quit</button>
+                    </div>
+                </div>
 
             </div>
         </main>
