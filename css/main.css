@@ -43,7 +43,7 @@ header {
 }
 
 header .title {
-  font-size: 2.5rem;
+  font-size: 2.7rem;
   color: #37e2d5;
   text-shadow: 0.2rem 0.2rem 0.2rem red;
   -webkit-transition: -webkit-transform 0.5s 0.7s;
@@ -66,7 +66,7 @@ header h1 {
     width: 0;
   }
   to {
-    width: 24rem;
+    width: 25.6rem;
   }
 }
 
@@ -75,7 +75,7 @@ header h1 {
     width: 0;
   }
   to {
-    width: 24rem;
+    width: 25.6rem;
   }
 }
 
@@ -199,6 +199,7 @@ main .game-active {
   height: 112%;
   -webkit-transform: translateY(-10.5%);
           transform: translateY(-10.5%);
+  z-index: -2;
 }
 
 main .game-active .game-section {
@@ -220,13 +221,10 @@ main .game-active .game-section {
 }
 
 main .game-active .game-section .game-card {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  display: none;
   position: relative;
   margin: 0.8rem;
   height: 22%;
-  min-width: 10%;
   width: 14%;
   border-radius: 5px;
   cursor: pointer;
@@ -398,7 +396,7 @@ main .game-active .status-section .moves-section .time,
 main .game-active .status-section .moves-section .moves,
 main .game-active .status-section .moves-section .progress, main .game-active .status-section .progress-section .time,
 main .game-active .status-section .progress-section .moves, main .game-active .status-section .progress-section .progress {
-  margin-bottom: 1rem;
+  margin-bottom: 0.8rem;
 }
 
 main .game-active .status-section .time-section .time-counter, main .game-active .status-section .time-section .moves-counter, main .game-active .status-section .time-section .progress-counter,
@@ -426,7 +424,6 @@ main .game-active .status-section .buttons-section .btn-pause, main .game-active
   text-shadow: 0.2rem 0.2rem 0.2rem red;
   background-color: #c70a80;
   border: none;
-  border-radius: 5px;
   -webkit-box-shadow: 0.2rem 0.2rem 0.2rem red;
           box-shadow: 0.2rem 0.2rem 0.2rem red;
   cursor: pointer;
