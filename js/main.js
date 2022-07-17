@@ -11,7 +11,12 @@ let countTime;
 let timeCounter;
 let seconds;
 let minutes;
+let progressPercent;
+let progressPercentText;
+let matchCounter;
 let clientWidth;
+let cardAmount;
+let cardOrder;
 
 const main = () => {
 	prepareDOMElements();
@@ -30,6 +35,9 @@ const prepareDOMElements = () => {
 	seconds = 0;
 	minutes = 0;
 	clientWidth = document.documentElement.clientWidth;
+	progressPercentText = document.querySelector(".progress-counter");
+	progressPercent = 0;
+	matchCounter = 0;
 	console.log(clientWidth);
 };
 
@@ -43,7 +51,7 @@ const gameStart = () => {
 	setTimeout(headerStartAnimation, 450);
 	setTimeout(gameBoardActivation, 1250);
 	setTimeout(timeStart, 1000);
-	allCards.forEach(cardsShuffle)
+	allCards.forEach(cardsShuffle);
 };
 
 const gameBoardActivation = () => {
@@ -77,8 +85,11 @@ const checkMatch = e => {
 			clickedCardID = [];
 			firstCard = [];
 			allCards.forEach(card => (card.style.pointerEvents = ""));
+			matchCounter++;
+			progressPercent = (matchCounter / cardAmount) * 100;
+			progressPercentText.textContent = Math.round(progressPercent) + '%';
 		} else {
-			setTimeout(clear, 700, e);
+			setTimeout(clear, 500, e);
 		}
 	}
 };
@@ -95,15 +106,28 @@ const clear = e => {
 	allCards.forEach(card => (card.style.pointerEvents = ""));
 };
 
-const cardsShuffle = (card) => {
-if (card.id < 11) {
-	card.style.display = 'flex'
-}
-		}
-	
+const checkResolution = () => {
+	if (clientWidth < 400) {
+		cardAmount = 8;
+	} else if (clientWidth > 400 && clientWidth < 600) {
+		cardAmount = 10;
+	} else if (clientWidth > 600 && clientWidth < 800) {
+		cardAmount = 12;
+	} else {
+		cardAmount = 16;
+	}
+};
 
-	
-
+const cardsShuffle = card => {
+	checkResolution();
+	console.log(cardAmount);
+	cardOrder = Math.random() * 1000;
+	console.log(cardOrder);
+	if (card.id <= cardAmount) {
+		card.style.display = "flex";
+		card.style.order = Math.round(cardOrder);
+	}
+};
 
 const timeStart = () => {
 	clearInterval(countTime);
@@ -120,7 +144,7 @@ const timeStart = () => {
 			seconds = 0;
 			timeCounter.textContent = `${minutes}:00`;
 		}
-	}, 300);
+	}, 1000);
 };
 
 document.addEventListener("DOMContentLoaded", main);

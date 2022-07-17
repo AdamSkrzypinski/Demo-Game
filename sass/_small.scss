@@ -1,4 +1,4 @@
-@media (min-width: 576px) {
+@media (max-width: 600px) {
 	main {
 		.game-active {
 			.status-section {
@@ -10,6 +10,14 @@
                     .time-counter, .moves-counter, .progress-counter {
                         font-size: 2.2rem;
                     }
+				}
+			}
+		}
+
+		.game-active {
+			.game-section {
+				.game-card {
+					width: 16%;
 				}
 			}
 		}
